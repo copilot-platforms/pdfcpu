@@ -123,6 +123,11 @@ func evalOutlineCount(xRefTable *model.XRefTable, c, visc int, count, total, vis
 			if xRefTable.ValidationMode == model.ValidationStrict {
 				return errors.New("pdfcpu: validateOutlineTree: non-empty outline item dict needs \"Count\" <> 0")
 			}
+
+			if count == nil {
+				count = new(int)
+			}
+
 			*count = c
 		}
 		if *count != c && *count != -c {
